@@ -1236,8 +1236,9 @@ static int cs35l41_no_acpi_dsd(struct cs35l41_hda *cs35l41, struct device *physd
 	hw_cfg->gpio2.func = CS35L41_INTERRUPT;
 	hw_cfg->gpio2.valid = true;
 	hw_cfg->valid = true;
-
-	if (strncmp(hid, "CLSA0100", 8) == 0) {
+	
+	if ((strncmp(hid, "CLSA0100", 8) == 0) ||
++	    (strncmp(hid, "CSC3551", 7) == 0)) {
 		hw_cfg->bst_type = CS35L41_EXT_BOOST_NO_VSPK_SWITCH;
 	} else if (strncmp(hid, "CLSA0101", 8) == 0) {
 		hw_cfg->bst_type = CS35L41_EXT_BOOST;
